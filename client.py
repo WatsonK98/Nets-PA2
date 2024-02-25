@@ -17,7 +17,7 @@ def open_struct(struct_obj):
 def create_initialization(hash_requests):
     # This function will be used to create the initialization message to send to the server using struct
     # Then, return the message
-    empty_binary = ''.encode('utf-2')
+    empty_binary = ''.encode('utf-8')
     message = create_struct(socket.htons(1), socket.htonl(hash_requests), 0, empty_binary)
     return message
 
@@ -28,7 +28,7 @@ def create_hash_request(hash_count, block_size, current_block):
 
     hash_count += 1;
     block_len = block_size
-    struct_hash_message = create_struct(0x3, hash_count, block_len, current_block)
+    struct_hash_message = create_struct(socket.htons(3), hash_count, block_len, current_block)
 
     return struct_hash_message
 
@@ -108,9 +108,12 @@ if __name__ == '__main__':
     
     # Write your code to implement client's side protocol logic.
     while True:
+
         current_block = chosen_file.read(hash_block_size)
+
         if not current_block:
             break
+        
         hash_request_message = create_hash_request(count, hash_block_size, current_block)
         server_socket.sendall(hash_request_message)
 

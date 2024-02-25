@@ -34,7 +34,7 @@ def check_initialization(encoded_data):
         num_hash_requests = socket.ntohl(initial_message[1])  # Block sizes this client will send
         type_val = socket.ntohs(initial_message[0])
         if type_val != 1:
-            print("SERVER: Invalid Type Value here")
+            print("SERVER: Invalid Type Value")
             return False
         return num_hash_requests
     except:
@@ -45,6 +45,7 @@ def check_hash_request(encoded_data):
     try:
         initial_message = open_struct(encoded_data)
         type_val = socket.ntohs(initial_message[0])
+        print(type_val)
         if type_val != 3:
             print("SERVER: Invalid Type Value")
             return False 
@@ -111,20 +112,8 @@ if __name__ == '__main__':
                         s.close()
                         continue
 
-                    initial_message = open_struct(data)
-                    message_type = initial_message[0]
-
-                    if message_type == 1:
-                        n_sizes[s] = check_initialization(data)
-                        ack_message = create_acknowledgement(data)
-                        s.sendall(ack_message)
-                    elif message_type == 2:
-                        hash_request_info = check_hash_request(data)
-                        if hash_request_info:
-                            hashed_data_response = get_hashed_data(hash_request_info)
-                            s.sendall(hashed_data_response)
-                    else:
-                        print(f"Unknown message type")
+                    check_initialization(data)
+                    check_hash_request(data)
 
                 except ConnectionResetError:
                     print(f"Client unexpectedly disconnected")
