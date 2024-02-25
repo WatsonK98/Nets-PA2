@@ -17,8 +17,8 @@ def open_struct(struct_obj):
 def create_initialization(hash_requests):
     # This function will be used to create the initialization message to send to the server using struct
     # Then, return the message
-    empty_binary = b'\x00'*32
-    message = create_struct(0x1, socket.htonl(hash_requests), 0, empty_binary)
+    empty_binary = ''.encode('utf-2')
+    message = create_struct(socket.htons(1), socket.htonl(hash_requests), 0, empty_binary)
     return message
 
 
