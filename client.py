@@ -27,7 +27,7 @@ def create_hash_request(hash_count, block_size, current_block):
     # Then, return the message as a struct obj
 
     hash_count += 1;
-    block_len = len(block_size)
+    block_len = block_size
     struct_hash_message = create_struct(0x3, hash_count, block_len, current_block)
 
     return struct_hash_message
@@ -37,7 +37,7 @@ def check_acknowledgement(encoded_data):
     try:
         initial_message = open_struct(encoded_data)
         type_val = socket.ntohs(initial_message[0])
-        if type_val != 0x2:
+        if type_val != 2:
             print("CLIENT: Invalid Type Value")
             return False
         return initial_message[2] # Returns the Length from Ack Message
@@ -50,7 +50,7 @@ def check_hash_response(encoded_data):
     try:
         initial_message = open_struct(encoded_data)
         type_val = socket.ntohs(initial_message[0])
-        if type_val != 0x4:
+        if type_val != 4:
             print("CLIENT: Invalid Type Value")
             return False
         return initial_message # Returns Struct Object

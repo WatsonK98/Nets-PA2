@@ -22,7 +22,7 @@ def create_acknowledgement(input_n):
     
     # Write your logic
     acknow_message = open_struct(input_n)
-    type = socket.ntohs(0x3)
+    type = 0x2
     length = 40 * acknow_message[1]
     empty_payload = b'\x00' * 32
     message = create_struct(type, 0, length, empty_payload)
@@ -33,9 +33,9 @@ def check_initialization(encoded_data):
     try:
         initial_message = open_struct(encoded_data)
         num_hash_requests = socket.ntohl(initial_message[1])  # Block sizes this client will send
-        type_val = socket.ntohs(initial_message[0])
-        if type_val != 0x1:
-            print("SERVER: Invalid Type Value")
+        type_val = initial_message[0]
+        if type_val != 1:
+            print("SERVER: Invalid Type Value here")
             return False
         return num_hash_requests
     except:
@@ -46,7 +46,7 @@ def check_hash_request(encoded_data):
     try:
         initial_message = open_struct(encoded_data)
         type_val = socket.ntohs(initial_message[0])
-        if type_val != 0x3:
+        if type_val != 3:
             print("SERVER: Invalid Type Value")
             return False 
         return initial_message # Struct Object
@@ -104,7 +104,7 @@ if __name__ == '__main__':
                 clients.append(client_socket)
             else:
                 try:
-                    data = s.recv(4096)
+                    data = s.recv(1024)
 
                     if not data:
                         print(f"Client disconnected")
@@ -113,15 +113,13 @@ if __name__ == '__main__':
                         continue
 
                     initial_message = open_struct(data)
-                    print(initial_message)
                     message_type = initial_message[0]
-                    print(message_type)
 
-                    if message_type == 0x1:
+                    if message_type == 1:
                         n_sizes[s] = check_initialization(data)
                         ack_message = create_acknowledgement(data)
                         s.sendall(ack_message)
-                    elif message_type == 0x2:
+                    elif message_type == 2:
                         hash_request_info = check_hash_request(data)
                         if hash_request_info:
                             hashed_data_response = get_hashed_data(hash_request_info)
