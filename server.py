@@ -22,9 +22,9 @@ def create_acknowledgement(input_n):
     
     # Write your logic
     acknow_message = open_struct(input_n)
-    type = 0x2
+    type = socket.ntohs(0x3)
     length = 40 * acknow_message[1]
-    empty_payload = b'\x00' * 32
+    empty_payload = socket.htonl(b'\x00' * 32)
     message = create_struct(type, 0, length, empty_payload)
     return message
 

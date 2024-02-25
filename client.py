@@ -18,7 +18,8 @@ def create_initialization(hash_requests):
     # This function will be used to create the initialization message to send to the server using struct
     # Then, return the message
     empty_binary = b'\x00'*32
-    message = create_struct(0x1, hash_requests, 0, empty_binary)
+    message = create_struct(0x1, socket.htonl(hash_requests), 0, empty_binary)
+    print(message)
     return message
 
 
@@ -85,7 +86,7 @@ if __name__ == '__main__':
 
     # Initialization Message Portion
     # Write your logic for initilization message
-    init_message = create_initialization(0)
+    init_message = create_initialization(hash_block_size)
     server_socket.sendall(init_message)
     print("Initialization sent.")
 
