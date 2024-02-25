@@ -19,7 +19,6 @@ def create_initialization(hash_requests):
     # Then, return the message
     empty_binary = b'\x00'*32
     message = create_struct(0x1, socket.htonl(hash_requests), 0, empty_binary)
-    print(message)
     return message
 
 

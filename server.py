@@ -24,7 +24,7 @@ def create_acknowledgement(input_n):
     acknow_message = open_struct(input_n)
     type = socket.ntohs(0x3)
     length = 40 * acknow_message[1]
-    empty_payload = socket.htonl(b'\x00' * 32)
+    empty_payload = b'\x00' * 32
     message = create_struct(type, 0, length, empty_payload)
     return message
 
@@ -104,7 +104,7 @@ if __name__ == '__main__':
                 clients.append(client_socket)
             else:
                 try:
-                    data = s.recv(1024)
+                    data = s.recv(4096)
 
                     if not data:
                         print(f"Client disconnected")
@@ -113,7 +113,9 @@ if __name__ == '__main__':
                         continue
 
                     initial_message = open_struct(data)
-                    message_type = socket.ntohs(initial_message[0])
+                    print(initial_message)
+                    message_type = initial_message[0]
+                    print(message_type)
 
                     if message_type == 0x1:
                         n_sizes[s] = check_initialization(data)
