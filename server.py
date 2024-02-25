@@ -21,9 +21,10 @@ def create_acknowledgement(input_n):
     # Then, return acknowledgement message
     
     # Write your logic
-    type = socket.htons(2)
-    length = socket.htonl(input_n * 40)
-    empty_payload = b'\x00' * 32
+    acknow_message = open_struct(input_n)
+    type = 0x2
+    length = acknow_message[1]
+    empty_payload = bytes(32)
     message = create_struct(type, 0, length, empty_payload)
     return message
 
@@ -32,8 +33,9 @@ def check_initialization(encoded_data):
     try:
         initial_message = open_struct(encoded_data)
         num_hash_requests = socket.ntohl(initial_message[1])  # Block sizes this client will send
-        type_val = socket.ntohs(initial_message[0])
-        if type_val != 1:
+        type_val = initial_message[0]
+        print(type_val)
+        if type_val != 0x1:
             print("SERVER: Invalid Type Value")
             return False
         return num_hash_requests
@@ -44,9 +46,8 @@ def check_initialization(encoded_data):
 def check_hash_request(encoded_data):
     try:
         initial_message = open_struct(encoded_data)
-        type_val = socket.ntohs(initial_message[0])
-        print(type_val)
-        if type_val != 3:
+        type_val = initial_message[0]
+        if type_val != 0x3:
             print("SERVER: Invalid Type Value")
             return False 
         return initial_message # Struct Object
@@ -60,12 +61,12 @@ def get_hashed_data(hash_request):
     # Then, return hashed data and hash response
 
     # Extract variables
-    request_type = hash_request[0]  # HashRequest Type
+    request_type = 0x4
     request_i = hash_request[1]  # HashRequest i
     request_len = 32  # HashRequest Length
+    print(hash_salt)
     request_payload = hash_salt.encode('utf-8') + hash_request[3]  # HashRequest Data + UTF-8 Encoded Salt
-
-    hash_and_salt = hashlib.sha256(request_payload)
+    hash_and_salt = hashlib.sha256(request_payload).digest()
     request_i += 1
     return create_struct(request_type, request_i, request_len, hash_and_salt)
 
@@ -112,16 +113,24 @@ if __name__ == '__main__':
                         s.close()
                         continue
 
-                    check_initialization(data)
-                    check_hash_request(data)
+                    initial_message = open_struct(data)
+                    message_type = initial_message[0]
+                    #message_type = socket.ntohs(initial_message[0])
+                    print(message_type)
+
+                    if message_type == 0x1:
+                        n_sizes[s] = check_initialization(data)
+                        ack_message = create_acknowledgement(data)
+                        s.sendall(ack_message)
+                    elif message_type == 0x3:
+                        hash_request_info = check_hash_request(data)
+                        if hash_request_info:
+                            hashed_data_response = get_hashed_data(hash_request_info)
+                            s.sendall(hashed_data_response)
+                    else:
+                        print(f"Unknown message type")
 
                 except ConnectionResetError:
                     print(f"Client unexpectedly disconnected")
                     clients.remove(s)
                     s.close()
-
-
-
-
-
-    

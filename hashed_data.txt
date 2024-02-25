@@ -1,0 +1,34 @@
+Current Block: b' I always get the shakes before ' :: Hashed: 2b7ebe9623b45970b03d076c15d554c86cdbb0c4c4aae43d932d37b6be6bfcfe
+Current Block: b'a drop.\r\nI\xe2\x80\x99ve had the injectio' :: Hashed: adf0ff39946e91594f4076568f57d178ee320427d4685b84787f626557c48511
+Current Block: b'ns, of course,\r\nand hypnotic pre' :: Hashed: e236f4f2e3665bb76ea3843181a70db4e61975320a9dd5242b5b9e87f3fc6e91
+Current Block: b'paration, and it stands to reaso' :: Hashed: 36f6f58395025a9131c8e5ea9d22d800f2382529ef9e0907607a0a55964bbfed
+Current Block: b'n that I can\xe2\x80\x99t really be afrai' :: Hashed: 54dbae33072e971d6cb17bde9b68b44d1d3758f9caba67996ecd6d76b0b24347
+Current Block: b'd.\r\nThe ship\xe2\x80\x99s psychiatrist ha' :: Hashed: 5cc21acf7a6663205e4f15f743630332a7588fdeab3d8da28cf368146c7a8184
+Current Block: b's checked my brain waves and ask' :: Hashed: 377be6b3a7713aa82cea93ae1407edf9cea1d2f6809045febba012f54b95e822
+Current Block: b'ed me silly questions\r\nwhile I w' :: Hashed: 4cd6e23eef36b71b118378f5feef206cc31a1188ac98883de5f26828ad328409
+Current Block: b'as asleep and he tells me that i' :: Hashed: 008bf14607f2ec190334a277c84af6df21eda4cfc22f1cacb79700a30d439dd0
+Current Block: b't isn\xe2\x80\x99t fear, it isn\xe2\x80\x99t anyth' :: Hashed: f033441d79827bbb782ee4ef0c16b2ad258e4a1b1d602b166fd93577b8bdd126
+Current Block: b'ing important \xe2\x80\x94\r\nit\xe2\x80\x99s just l' :: Hashed: 928c57d2bc4941f587e4c73ac543af41bdf6863e224edf29bd4df8d74dacf8ad
+Current Block: b'ike the trembling of an eager ra' :: Hashed: d7c866683d5a888b3b6d01c8592bf46b937e6cf395451f41aef2a47cfaa658f7
+Current Block: b'ce horse in the starting gate. I' :: Hashed: 0d3988d761667278e3bc7aa7e75e1df165a1abac702ae7697ec20bc0bc5619f6
+Current Block: b' couldn\xe2\x80\x99t\r\nsay about that; I\xe2\x80' :: Hashed: 42aa211f04bf021ca3d422b3f43ad345af827dba15127014903873e143769b4f
+Current Block: b'\x99ve never been a race horse. But' :: Hashed: 521212cabc17e4fcfd0c95f1704c23a9c05df172a12dd41291f76ad3abcf3241
+Current Block: b' the fact is: I\xe2\x80\x99m scared silly' :: Hashed: 974322c63a66b96d321f9742805f19123b7315eea9937da3ec1abedabf77ceae
+Current Block: b', every time.\r\nAt D-minus-thirty' :: Hashed: 685302ac989b3b13ab681bf3256033c2a28e716a27e5e21709faee8c55132590
+Current Block: b', after we had mustered in the d' :: Hashed: 07342626e2f7408f30c96c4d9b8ad0b2c1e769458a4df0653b2c3019ac0f25b8
+Current Block: b'rop room of theRodger Young , ou' :: Hashed: 37f711c717b3e959a1db88db3fd86b8abf8fc6b38c7c4f104fabd8d981bc46fc
+Current Block: b'r platoon leader\r\ninspected us. ' :: Hashed: acabb9d01e0092bd84e32dd1c81144a31dbb7e61b7f237db914c9cf2fd9ad9ea
+Current Block: b'He wasn\xe2\x80\x99t our regular platoon ' :: Hashed: f0e32db1b3afea4d4e01adfae996c050723225963aed50b8ba828599fe6059ef
+Current Block: b'leader, because Lieutenant Rascz' :: Hashed: d7eb5e2a2acb9ad76d6b9e37549b1827fd5077397a160adab8cb6225cb4423da
+Current Block: b'ak had bought it on our\r\nlast dr' :: Hashed: eba1173923a4157733d6a587fba6f1f67109fc612e42ba1daecea0d03541bb17
+Current Block: b'op; he was really the platoon se' :: Hashed: 4b057f13a5a74af62c149361971d3233200a9a6335430a480b213a2908929b9f
+Current Block: b'rgeant, Career Ship\xe2\x80\x99s Sergeant' :: Hashed: d40b6cfa3e71d7ecaedb98ef36aadf766f633658d0a6ae253ad20ccc09aa59f2
+Current Block: b' Jelal. Jelly was a Finno-Turk\r\n' :: Hashed: dbc03272ac9ad02f932631a1166bc9f8c6610c5a5b126656ad0c1ebb368fdbe7
+Current Block: b'from Iskander around Proxima \xe2\x80\x94' :: Hashed: 273d0e49ac5a81b873aabf71675f48d34a5ff4ac0de4254d9ac53b79ebc310f9
+Current Block: b' a swarthy little man who looked' :: Hashed: f3156aae63c3d8af08f96a14c219284f571642720f4ccb0b4d12141dcd33abce
+Current Block: b' like a clerk, but I\xe2\x80\x99ve seen h' :: Hashed: 2ddaef554442a54e097e6da8bdadff261462913fc30d7315af8d5c1d49c32313
+Current Block: b'im tackle\r\ntwo berserk privates ' :: Hashed: 8eede13b9c52e85b1ddba20061f8df32831fcedb6f0298de271ee3fe85fc4e66
+Current Block: b'so big he had to reach up to gra' :: Hashed: 8f6a4601e52b1d8224560b72c1a83db8b483df4e7fb8e4f7b022f283591c51ee
+Current Block: b'b them, crack their heads togeth' :: Hashed: dcd88fe72988cffa31a042733b6921ee8fff25e2a9c09456cf455120baaa5d9d
+Current Block: b'er like coconuts,\r\nstep back out' :: Hashed: f41508e88aff4327dcabf36b89071b1d7e2da9775341b1919d6239f0ff330072
+Current Block: b' of the way while they fell.' :: Hashed: c85327a9f4e122bce7f660eed61ea4c158ef03c6f482541622ed14e045c0a069

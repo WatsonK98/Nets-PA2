@@ -17,8 +17,8 @@ def open_struct(struct_obj):
 def create_initialization(hash_requests):
     # This function will be used to create the initialization message to send to the server using struct
     # Then, return the message
-    empty_binary = ''.encode('utf-8')
-    message = create_struct(socket.htons(1), socket.htonl(hash_requests), 0, empty_binary)
+    empty_binary = bytes(32)
+    message = create_struct(0x1, socket.htonl(hash_requests), 0, empty_binary)
     return message
 
 
@@ -28,7 +28,7 @@ def create_hash_request(hash_count, block_size, current_block):
 
     hash_count += 1;
     block_len = block_size
-    struct_hash_message = create_struct(socket.htons(3), hash_count, block_len, current_block)
+    struct_hash_message = create_struct(0x3, hash_count, block_len, current_block)
 
     return struct_hash_message
 
@@ -36,8 +36,8 @@ def create_hash_request(hash_count, block_size, current_block):
 def check_acknowledgement(encoded_data):
     try:
         initial_message = open_struct(encoded_data)
-        type_val = socket.ntohs(initial_message[0])
-        if type_val != 2:
+        type_val = initial_message[0]
+        if type_val != 0x2:
             print("CLIENT: Invalid Type Value")
             return False
         return initial_message[2] # Returns the Length from Ack Message
@@ -49,8 +49,9 @@ def check_acknowledgement(encoded_data):
 def check_hash_response(encoded_data):
     try:
         initial_message = open_struct(encoded_data)
-        type_val = socket.ntohs(initial_message[0])
-        if type_val != 4:
+        type_val = initial_message[0]
+        print(type_val)
+        if type_val != 0x4:
             print("CLIENT: Invalid Type Value")
             return False
         return initial_message # Returns Struct Object
@@ -108,12 +109,9 @@ if __name__ == '__main__':
     
     # Write your code to implement client's side protocol logic.
     while True:
-
         current_block = chosen_file.read(hash_block_size)
-
         if not current_block:
             break
-        
         hash_request_message = create_hash_request(count, hash_block_size, current_block)
         server_socket.sendall(hash_request_message)
 
@@ -125,7 +123,7 @@ if __name__ == '__main__':
             continue
             
         hash_value = response[3]
-        hashed_data.write(hash_value.hex())
+        hashed_data.write(f"Current Block: {current_block} :: Hashed: {hash_value.hex()}")
         hashed_data.write('\n')
         count += 1
 
@@ -134,6 +132,3 @@ if __name__ == '__main__':
     hashed_data.close()  # New Hash Data File
     chosen_file.close()  # Command Line File
     server_socket.close()  # Server Socket
-
-
-
